@@ -1,0 +1,3 @@
+Calificación tarea explorador de archivos: 2.5/3
+Al presionar enter se debe cargar también los archivos texto existente en el directorio
+Cuando se pulsa sobre un archivo zip, queda colgado
