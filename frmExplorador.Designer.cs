@@ -38,6 +38,7 @@ namespace TareaBuscarArchivoTextoEnCarpetas
             this.btnArchivos = new System.Windows.Forms.Button();
             this.btnAbrir = new System.Windows.Forms.Button();
             this.txtResultado = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtRuta
@@ -51,6 +52,7 @@ namespace TareaBuscarArchivoTextoEnCarpetas
             this.txtRuta.Size = new System.Drawing.Size(687, 25);
             this.txtRuta.TabIndex = 0;
             this.txtRuta.TextChanged += new System.EventHandler(this.txtRuta_TextChanged);
+            this.txtRuta.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRuta_KeyDown);
             // 
             // lstCarpetas
             // 
@@ -66,6 +68,7 @@ namespace TareaBuscarArchivoTextoEnCarpetas
             this.lstCarpetas.Size = new System.Drawing.Size(302, 182);
             this.lstCarpetas.TabIndex = 1;
             this.lstCarpetas.SelectedIndexChanged += new System.EventHandler(this.lstCarpetas_SelectedIndexChanged);
+            this.lstCarpetas.DoubleClick += new System.EventHandler(this.button1_Click);
             // 
             // btnCarpetas
             // 
@@ -73,12 +76,13 @@ namespace TareaBuscarArchivoTextoEnCarpetas
             this.btnCarpetas.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCarpetas.Font = new System.Drawing.Font("Consolas", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCarpetas.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btnCarpetas.Location = new System.Drawing.Point(80, 264);
+            this.btnCarpetas.Location = new System.Drawing.Point(536, 40);
             this.btnCarpetas.Name = "btnCarpetas";
             this.btnCarpetas.Size = new System.Drawing.Size(163, 32);
             this.btnCarpetas.TabIndex = 2;
             this.btnCarpetas.Text = "Buscar carpetas";
             this.btnCarpetas.UseVisualStyleBackColor = false;
+            this.btnCarpetas.Visible = false;
             this.btnCarpetas.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // label1
@@ -106,6 +110,7 @@ namespace TareaBuscarArchivoTextoEnCarpetas
             this.lstArchivos.Size = new System.Drawing.Size(302, 182);
             this.lstArchivos.TabIndex = 4;
             this.lstArchivos.SelectedIndexChanged += new System.EventHandler(this.lstArchivos_SelectedIndexChanged);
+            this.lstArchivos.DoubleClick += new System.EventHandler(this.btnAbrir_Click);
             // 
             // btnArchivos
             // 
@@ -113,13 +118,13 @@ namespace TareaBuscarArchivoTextoEnCarpetas
             this.btnArchivos.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnArchivos.Font = new System.Drawing.Font("Consolas", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnArchivos.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btnArchivos.Location = new System.Drawing.Point(382, 266);
+            this.btnArchivos.Location = new System.Drawing.Point(15, 264);
             this.btnArchivos.Name = "btnArchivos";
             this.btnArchivos.Size = new System.Drawing.Size(163, 32);
             this.btnArchivos.TabIndex = 5;
             this.btnArchivos.Text = "Buscar archivos";
             this.btnArchivos.UseVisualStyleBackColor = false;
-            this.btnArchivos.Click += new System.EventHandler(this.button1_Click);
+            this.btnArchivos.Visible = false;
             // 
             // btnAbrir
             // 
@@ -127,12 +132,13 @@ namespace TareaBuscarArchivoTextoEnCarpetas
             this.btnAbrir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAbrir.Font = new System.Drawing.Font("Consolas", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAbrir.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btnAbrir.Location = new System.Drawing.Point(188, 490);
+            this.btnAbrir.Location = new System.Drawing.Point(323, 266);
             this.btnAbrir.Name = "btnAbrir";
             this.btnAbrir.Size = new System.Drawing.Size(255, 32);
             this.btnAbrir.TabIndex = 7;
             this.btnAbrir.Text = "Abrir Archivo Seleccionado";
             this.btnAbrir.UseVisualStyleBackColor = false;
+            this.btnAbrir.Visible = false;
             this.btnAbrir.Click += new System.EventHandler(this.btnAbrir_Click);
             // 
             // txtResultado
@@ -146,6 +152,17 @@ namespace TareaBuscarArchivoTextoEnCarpetas
             this.txtResultado.Size = new System.Drawing.Size(610, 159);
             this.txtResultado.TabIndex = 8;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.label2.Font = new System.Drawing.Font("Consolas", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(566, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(120, 17);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "PRESIONE ENTER";
+            // 
             // frmExplorador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -153,6 +170,7 @@ namespace TareaBuscarArchivoTextoEnCarpetas
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(712, 532);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.txtResultado);
             this.Controls.Add(this.btnAbrir);
             this.Controls.Add(this.btnArchivos);
@@ -181,6 +199,7 @@ namespace TareaBuscarArchivoTextoEnCarpetas
         private System.Windows.Forms.Button btnArchivos;
         private System.Windows.Forms.Button btnAbrir;
         private System.Windows.Forms.TextBox txtResultado;
+        private System.Windows.Forms.Label label2;
     }
 }
 

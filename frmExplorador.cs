@@ -51,16 +51,10 @@ namespace TareaBuscarArchivoTextoEnCarpetas
             
         }
 
-        private void btnArchivos_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            string carpeta = this.txtRuta.Text;
             string directorio = this.txtRuta.Text + "\\" + this.lstCarpetas.SelectedItem;
-            this.txtRuta.Text = directorio;
+            
 
             DirectoryInfo di = new DirectoryInfo(directorio);
 
@@ -73,20 +67,16 @@ namespace TareaBuscarArchivoTextoEnCarpetas
 
         }
 
-        private void lstResultado_SelectedIndexChanged(object sender, EventArgs e)
-        {
+       
 
-        }
 
         private void btnAbrir_Click(object sender, EventArgs e)
         {
-            this.txtRuta.Text = this.txtRuta.Text + "\\" + this.lstArchivos.SelectedItem;
+            
             try
             {
-                
-                string file = this.txtRuta.Text;
-
-                Console.WriteLine("RUTA SELECCIONADA:" + file);
+                string directorio = this.txtRuta.Text + "\\" + this.lstCarpetas.SelectedItem;
+                string file = directorio + "\\" + this.lstArchivos.SelectedItem;
 
                 FileStream archivo = new FileStream(file, FileMode.Open);
                 StreamReader sr = new StreamReader(archivo);
@@ -107,6 +97,22 @@ namespace TareaBuscarArchivoTextoEnCarpetas
             {
                 MessageBox.Show(e1.Message.ToString(), "Mensaje para los papus", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            
+        }
+
+        private void eventLog1_EntryWritten(object sender, System.Diagnostics.EntryWrittenEventArgs e)
+        {
+
+        }
+
+        private void txtRuta_KeyDown(object sender, KeyEventArgs e)
+        {
+            
+                if (e.KeyCode == Keys.Enter)
+                {
+                    btnAceptar_Click((object)sender, (EventArgs)e);
+                }
+            
         }
     }
 }
